@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[ExecuteInEditMode]
 public class TileMapStats:MonoBehaviour {
-    public void showStats() {
-        Tilemap tilemap = GetComponent<Tilemap>();
 
-        Vector3Int tilemapSize = tilemap.size;
-        Vector3Int tilemapEditorPreviewSize = tilemap.editorPreviewSize;
-        BoundsInt tilemapBounds = tilemap.cellBounds;
+    public Vector3Int tilemapSize;
+    private Tilemap tilemap;
 
-        Debug.Log("TilemapSize: " + tilemapSize + " | TilemapEditorPreviewSize: " + tilemapEditorPreviewSize);
-        Debug.Log("TilemapBounds: " + tilemapBounds);
+    public void Start() {
+
+        tilemap = GetComponent<Tilemap>();
+    }
+
+    public void Update() {
+
+        tilemapSize = tilemap.editorPreviewSize;
     }
 }
