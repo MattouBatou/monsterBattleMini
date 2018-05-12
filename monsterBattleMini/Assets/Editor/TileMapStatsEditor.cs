@@ -1,25 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿// Saving as reference for how to update the editor with custom features on update.
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEditor;
 
-[CustomEditor(typeof(TileMapStats))]
-public class TileMapStatsEditor:Editor {
+//[CustomEditor(typeof(TileMapStats))]
+//public class TileMapStatsEditor:Editor {
 
-    private static Vector3Int tilemapSize;
+//    private static Vector3Int tilemapSize;
+//    private static int uniqueTilesUsed;
 
-    private void OnEnable() {
-        EditorApplication.update += Update;
-        TileMapStats tilemapStats = (TileMapStats)target;
-        tilemapSize = tilemapStats.tilemapSize;
-    }
+//    private void Awake() {
+//        EditorApplication.update += UpdateEditor;
+//    }
 
-    private void OnDisable() {
-        EditorApplication.update -= Update;
-    }
+//    private void OnEnable() {
+//        TileMapStats tilemapStats = (TileMapStats)target;
+//        tilemapSize = tilemapStats.tilemapSize;
+//        uniqueTilesUsed = tilemapStats.uniqueTilesUsed;
+//    }
 
-    private void Update() {
+//    private void OnDisable() {
+//        EditorApplication.update -= UpdateEditor;
+//    }
 
-        EditorGUILayout.Vector3Field("Tilemap Size", tilemapSize);
-    }
-}
+//    private void UpdateEditor() {
+
+//        EditorGUILayout.Vector3Field("Tilemap Size", tilemapSize);
+//        EditorGUILayout.IntField(uniqueTilesUsed);
+//    }
+//}

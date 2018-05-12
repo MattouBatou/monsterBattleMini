@@ -4,8 +4,12 @@ using UnityEngine.Tilemaps;
 [ExecuteInEditMode]
 public class TileMapStats:MonoBehaviour {
 
-    public Vector3Int tilemapSize;
     private Tilemap tilemap;
+
+    public BoundsInt tilemapBounds;
+    public int uniqueTilesUsed;
+    public int activeTileCount;
+    public bool checkActiveTileCount = false;
 
     public void Start() {
 
@@ -14,6 +18,17 @@ public class TileMapStats:MonoBehaviour {
 
     public void Update() {
 
-        tilemapSize = tilemap.editorPreviewSize;
+        tilemapBounds = tilemapBounds = tilemap.cellBounds;
+        uniqueTilesUsed = tilemap.GetUsedTilesCount();
+
+        if (checkActiveTileCount) {
+            TileBase[] tileArray = tilemap.GetTilesBlock(tilemapBounds);
+            activeTileCount = 0;
+            for (int index = 0; index < tileArray.Length; index++) {
+                if (tileArray[index] != null) {
+                    activeTileCount++;
+                }
+            }
+        }
     }
 }
