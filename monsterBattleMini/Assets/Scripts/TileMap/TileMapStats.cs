@@ -18,7 +18,7 @@ public class TileMapStats:MonoBehaviour {
 
     public void Update() {
 
-        tilemapBounds = tilemapBounds = tilemap.cellBounds;
+        tilemapBounds = tilemap.cellBounds;
         uniqueTilesUsed = tilemap.GetUsedTilesCount();
 
         if (checkActiveTileCount) {
