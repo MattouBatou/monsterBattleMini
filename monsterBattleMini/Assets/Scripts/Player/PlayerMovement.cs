@@ -12,12 +12,14 @@ public class PlayerMovement:MonoBehaviour {
     bool isMoving = false;
 
     private Animator _Anim;
+    protected Rigidbody2D body;
 
-    public float walkSpeed = 7f;
+    public float walkSpeed = 20f;
 
     private void Start() {
         input = InputManager.instance;
         _Anim = this.GetComponent<Animator>();
+        body = this.GetComponent<Rigidbody2D>();
 
         lastInputDirection = Vector2.zero;
     }
@@ -30,6 +32,7 @@ public class PlayerMovement:MonoBehaviour {
 
     public void Move() {
         isMoving = false;
+        body.velocity = new Vector2(0, 0);
 
         if (moveInputDirection.x != 0 || moveInputDirection.y != 0) {
             isMoving = true;
@@ -37,7 +40,7 @@ public class PlayerMovement:MonoBehaviour {
             lastInputDirection.x = moveInputDirection.x;
             lastInputDirection.y = moveInputDirection.y;
 
-            transform.Translate(moveInputDirection * walkSpeed * Time.deltaTime);
+            body.velocity = moveInputDirection.normalized * walkSpeed;
         }
     }
 
@@ -49,8 +52,6 @@ public class PlayerMovement:MonoBehaviour {
         if (input.GetButton(playerId, InputAction.Down)) { moveInputDirection += Vector2.down; }
         if (input.GetButton(playerId, InputAction.Left)) { moveInputDirection += Vector2.left; }
         if (input.GetButton(playerId, InputAction.Right)) { moveInputDirection += Vector2.right; }
-
-        moveInputDirection.Normalize();
     }
 
     /// <summary>

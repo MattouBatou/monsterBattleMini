@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - world
+  - world terrain 1
   - player
   - Player1 Cam
   - Player2 Cam
-  - 
+  - Collidable
   - 
   - 
   - 
@@ -44,8 +44,17 @@ TagManager:
   - name: world background
     uniqueID: 3907850303
     locked: 0
-  - name: world ground
+  - name: world terrain 0
+    uniqueID: 1118490441
+    locked: 0
+  - name: world terrain 1
     uniqueID: 1559303433
+    locked: 0
+  - name: Buildings
+    uniqueID: 2700741235
+    locked: 0
+  - name: decoration 1
+    uniqueID: 1369887131
     locked: 0
   - name: player
     uniqueID: 2015904471
