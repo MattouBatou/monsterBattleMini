@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 029352e4d47ede34f854543390ec8a26, type: 3}
-  m_Name: woodFence01
+  m_Name: hedge01
   m_EditorClassIdentifier: 
   m_BitSprites: []
   m_TileColliderType: 0

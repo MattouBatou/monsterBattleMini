@@ -10,7 +10,7 @@ using UnityEditor;
 namespace UnityEngine.Tilemaps {
 
     [Serializable]
-    public class BM_PipeTile:TileBase {
+    public class BM_BasicFenceTile:TileBase {
 
         [SerializeField]
         public Sprite[] m_BitSprites;
@@ -72,76 +72,45 @@ namespace UnityEngine.Tilemaps {
 
             switch (mask) {
 
-                case 152:               // w e se
-                case 56:                // w e sw
-                case 25:                // nw w e
-                case 28:                // ne w e
-                case 29:                // nw ne w e
-                case 31:                // nw n ne w e
-                case 159:               // nw n ne w e se
-                case 184:               // w e sw se
-                case 189:               // nw ne w e sw se
-                case 248:               // w e sw s se
-                case 24:    return 1;   // w e
+                case 11: return 1;      // n w
 
-                case 84:                // ne e s
-                case 208:               // e s se
-                case 212:               // ne e s se
-                case 240:               // e sw s se
-                case 80:    return 2;   // e s
+                case 22: return 2;      // n e
 
-                case 73:                // nw w s
-                case 104:               // w sw s
-                case 105:               // nw w sw s
-                case 232:               // w sw s se
-                case 72:    return 3;   // w s
+                case 104: return 3;     // w s
 
-                case 11:                // nw n w
-                case 15:                // nw n ne w
-                case 42:                // n w sw
-                case 43:                // nw n w sw
-                case 10:    return 4;   // n w
+                case 107: return 4;     // nw n w sw s
 
-                case 22:                // n ne e
-                case 23:                // nw n ne e
-                case 146:               // n e se
-                case 150:               // n ne e se
-                case 18:    return 5;   // n e
+                case 208: return 5;     // e s
 
-                case 20:                // ne e
-                case 144:               // e se
-                case 16:    return 6;   // e
+                case 2:                 // n
+                case 64:                // s
+                case 66:                // n s
+                case 214: return 6;     // n ne e s se
 
-                case 64:    return 7;   // s
-
-                case 8:                 // w
-                case 40:                // w sw
-                case 9:     return 8;   // nw w
-
-                case 2:     return 9;   // n
+                case 255: return 8;     // all
             }
             return 0;
         }
 
 #if UNITY_EDITOR
-        [MenuItem("Assets/Create/BM_PipeTile")]
-        public static void CreateBM_PipeTile() {
-            string path = EditorUtility.SaveFilePanelInProject("Save BitMask Pipe Tile", "New Bitmask Pipe Tile", "asset", "Save BitMask Pipe Tile", "Assets");
+        [MenuItem("Assets/Create/BM_BasicFenceTile")]
+        public static void CreateBM_BasicFenceTile() {
+            string path = EditorUtility.SaveFilePanelInProject("Save BitMask Basic Fence Tile", "New Bitmask Basic Fence Tile", "asset", "Save BitMask Basic Fence Tile", "Assets");
             if (path == "") {
                 return;
             }
 
-            AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<BM_PipeTile>(), path);
+            AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<BM_BasicFenceTile>(), path);
         }
 #endif
     }
 
 #if UNITY_EDITOR
-    [CustomEditor(typeof(BM_PipeTile))]
+    [CustomEditor(typeof(BM_BasicFenceTile))]
     [CanEditMultipleObjects]
-    internal class BM_PipeTileEditor:Editor {
-        private BM_PipeTile tile { get { return (target as BM_PipeTile); } }
-        private const int k_bitSpriteCount = 10;
+    internal class BM_BasicFenceTileEditor:Editor {
+        private BM_BasicFenceTile tile { get { return (target as BM_BasicFenceTile); } }
+        private const int k_bitSpriteCount = 9;
         private const float k_spriteWH = 16f * 4f;
 
         // Tile Example Sprite Icons
@@ -150,16 +119,15 @@ namespace UnityEngine.Tilemaps {
             get {
                 if (s_spriteIcons == null) {
                     s_spriteIcons = new Texture2D[k_bitSpriteCount];
-                    s_spriteIcons[0] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAADUlEQVQI12Ngf0ASAgBT9w5xQ73+hQAAAABJRU5ErkJggg==");
-                    s_spriteIcons[1] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEElEQVQI12NAA///oyNUAAAfHwv1r4dpTQAAAABJRU5ErkJggg==");
-                    s_spriteIcons[2] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12NAA+z/MdADZAQAsGAKqIj75hgAAAAASUVORK5CYII=");
+                    s_spriteIcons[0] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUB/wAAAACkX63mAAAAEElEQVQI12OAA/kf+BAMAAABkgrnNcHeUAAAAABJRU5ErkJggg==");
+                    s_spriteIcons[1] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12Ngf4CC/mMgVAAAwqcPvh0c54EAAAAASUVORK5CYII=");
+                    s_spriteIcons[2] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12Ngf4CK/qMjVAAARVIKqNu1fMIAAAAASUVORK5CYII=");
                     s_spriteIcons[3] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12NAA/8foCN2FAQALcQPvkV6pDUAAAAASUVORK5CYII=");
-                    s_spriteIcons[4] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12Ngf4CC/mMgVAAAwqcPvh0c54EAAAAASUVORK5CYII=");
-                    s_spriteIcons[5] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12Ngf4CK/qMjVAAARVIKqNu1fMIAAAAASUVORK5CYII=");
-                    s_spriteIcons[6] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEElEQVQI12NAA/z/0REqAACVQAZVFfP5HgAAAABJRU5ErkJggg==");
-                    s_spriteIcons[7] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAADklEQVQI12NABuwPCCIAvgIK1WKud4YAAAAASUVORK5CYII=");
-                    s_spriteIcons[8] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEElEQVQI12NAA/8/oCNUAAAW3Aubql5w5QAAAABJRU5ErkJggg==");
-                    s_spriteIcons[9] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAADklEQVQI12Ngf0AYIQEAQAEK1SViy9MAAAAASUVORK5CYII=");
+                    s_spriteIcons[4] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAAB/wA3gS6KAAAADUlEQVQI12NgYCcJAQAKeABxy0hRBgAAAABJRU5ErkJggg==");
+                    s_spriteIcons[5] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEUlEQVQI12NAA+z/MdADZAQAsGAKqIj75hgAAAAASUVORK5CYII=");
+                    s_spriteIcons[6] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAAB/wA3gS6KAAAADUlEQVQI12N4wEASAgBXPw4BoMIRRgAAAABJRU5ErkJggg==");
+                    s_spriteIcons[7] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUA/wAAAABvA35DAAAAEElEQVQI12NAA///oyNUAAAfHwv1r4dpTQAAAABJRU5ErkJggg==");
+                    s_spriteIcons[8] = Base64ToTexture("iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA1BMVEUB/wA1nKqfAAAAC0lEQVQI12MgEQAAADAAAWV61nwAAAAASUVORK5CYII=");
                 }
                 return s_spriteIcons;
             }
