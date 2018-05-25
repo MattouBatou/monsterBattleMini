@@ -11,5 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029352e4d47ede34f854543390ec8a26, type: 3}
   m_Name: hedge01
   m_EditorClassIdentifier: 
-  m_BitSprites: []
-  m_TileColliderType: 0
+  m_BitSprites:
+  - {fileID: 21301260, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301320, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301206, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301208, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301286, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301284, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301318, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301148, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301322, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21301258, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  m_TileColliderType: 1

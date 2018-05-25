@@ -14,10 +14,10 @@ namespace UnityEngine.Tilemaps {
 
         [SerializeField]
         public Sprite[] m_BitSprites;
+        [SerializeField]
         public Tile.ColliderType m_TileColliderType = Tile.ColliderType.None;
 
         public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData) {
-            base.GetTileData(location, tilemap, ref tileData);
 
             if (m_BitSprites == null || m_BitSprites.Length <= 0) return;
 
@@ -107,7 +107,6 @@ namespace UnityEngine.Tilemaps {
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(BM_BasicFenceTile))]
-    [CanEditMultipleObjects]
     internal class BM_BasicFenceTileEditor:Editor {
         private BM_BasicFenceTile tile { get { return (target as BM_BasicFenceTile); } }
         private const int k_bitSpriteCount = 9;
@@ -133,20 +132,20 @@ namespace UnityEngine.Tilemaps {
             }
         }
 
+        public void OnEnable() {
+            // Reset size of sprite array if it has somehow changed (Defensive coding for future users)
+            if (tile.m_BitSprites == null || tile.m_BitSprites.Length != k_bitSpriteCount) {
+                tile.m_BitSprites = new Sprite[k_bitSpriteCount];
+            }
+        }
+
         public override void OnInspectorGUI() {
             createEditorLayout();
         }
 
         private void createEditorLayout() {
-            serializedObject.Update();
 
-            EditorGUI.BeginChangeCheck();
-
-            // Reset size of sprite array if it has somehow changed (Defensive coding for future users)
-            if (tile.m_BitSprites == null || tile.m_BitSprites.Length != k_bitSpriteCount) {
-                Array.Resize<Sprite>(ref tile.m_BitSprites, k_bitSpriteCount);
-            }
-
+            EditorGUILayout.LabelField("Bitmask Basic Fence Tile");
             EditorGUILayout.LabelField("Place sprites to match the example images.");
             EditorGUILayout.LabelField("Sprites required " + k_bitSpriteCount);
 
@@ -160,14 +159,12 @@ namespace UnityEngine.Tilemaps {
             // Draw actual tile sprite fields. These are used to assign the correct sprite to the tile when placing
             for (int i = 0; i < k_bitSpriteCount; i++) {
                 Rect r = (Rect)EditorGUILayout.BeginVertical();
-                tile.m_BitSprites[i] = (Sprite)EditorGUILayout.ObjectField("Sprite " + (i), tile.m_BitSprites[i], typeof(Sprite), false, null);
+                tile.m_BitSprites[i] = (Sprite)EditorGUILayout.ObjectField("Sprite " + (i), tile.m_BitSprites[i], typeof(Sprite), false);
                 spriteIcons[i].filterMode = FilterMode.Point;
                 EditorGUI.DrawPreviewTexture(new Rect((EditorGUIUtility.currentViewWidth) - (k_spriteWH * 2.5f), r.y, k_spriteWH, k_spriteWH), spriteIcons[i]);
                 EditorGUILayout.EndVertical();
                 EditorGUILayout.Space();
             }
-
-            EditorGUI.EndChangeCheck();
         }
 
         private static Texture2D Base64ToTexture(string base64) {

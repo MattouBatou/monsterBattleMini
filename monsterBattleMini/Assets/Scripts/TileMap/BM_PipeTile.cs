@@ -14,10 +14,10 @@ namespace UnityEngine.Tilemaps {
 
         [SerializeField]
         public Sprite[] m_BitSprites;
+        [SerializeField]
         public Tile.ColliderType m_TileColliderType = Tile.ColliderType.None;
 
         public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData) {
-            base.GetTileData(location, tilemap, ref tileData);
 
             if (m_BitSprites == null || m_BitSprites.Length <= 0) return;
 
@@ -78,6 +78,8 @@ namespace UnityEngine.Tilemaps {
                 case 28:                // ne w e
                 case 29:                // nw ne w e
                 case 31:                // nw n ne w e
+                case 60:                // ne w e sw
+                case 153:               // nw w e se
                 case 159:               // nw n ne w e se
                 case 184:               // w e sw se
                 case 189:               // nw ne w e sw se
@@ -85,6 +87,10 @@ namespace UnityEngine.Tilemaps {
                 case 24:    return 1;   // w e
 
                 case 84:                // ne e s
+                case 112:               // e sw s
+                case 116:               // ne e sw s
+                case 120:               // w e sw s
+                case 124:               // ne w e sw s
                 case 208:               // e s se
                 case 212:               // ne e s se
                 case 240:               // e sw s se
@@ -93,17 +99,21 @@ namespace UnityEngine.Tilemaps {
                 case 73:                // nw w s
                 case 104:               // w sw s
                 case 105:               // nw w sw s
+                case 216:               // w e s se
                 case 232:               // w sw s se
                 case 72:    return 3;   // w s
 
                 case 11:                // nw n w
                 case 15:                // nw n ne w
+                case 30:                // n ne w e
                 case 42:                // n w sw
                 case 43:                // nw n w sw
+                case 46:                // n ne w sw
                 case 10:    return 4;   // n w
 
                 case 22:                // n ne e
                 case 23:                // nw n ne e
+                case 27:                // nw n w e
                 case 146:               // n e se
                 case 150:               // n ne e se
                 case 18:    return 5;   // n e
@@ -138,7 +148,6 @@ namespace UnityEngine.Tilemaps {
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(BM_PipeTile))]
-    [CanEditMultipleObjects]
     internal class BM_PipeTileEditor:Editor {
         private BM_PipeTile tile { get { return (target as BM_PipeTile); } }
         private const int k_bitSpriteCount = 10;
@@ -165,20 +174,20 @@ namespace UnityEngine.Tilemaps {
             }
         }
 
+        public void OnEnable() {
+            // Reset size of sprite array if it has somehow changed (Defensive coding for future users)
+            if (tile.m_BitSprites == null || tile.m_BitSprites.Length != k_bitSpriteCount) {
+                tile.m_BitSprites = new Sprite[k_bitSpriteCount];
+            }
+        }
+
         public override void OnInspectorGUI() {
             createEditorLayout();
         }
 
         private void createEditorLayout() {
-            serializedObject.Update();
 
-            EditorGUI.BeginChangeCheck();
-
-            // Reset size of sprite array if it has somehow changed (Defensive coding for future users)
-            if (tile.m_BitSprites == null || tile.m_BitSprites.Length != k_bitSpriteCount) {
-                Array.Resize<Sprite>(ref tile.m_BitSprites, k_bitSpriteCount);
-            }
-
+            EditorGUILayout.LabelField("Bitmask Pipe Tile");
             EditorGUILayout.LabelField("Place sprites to match the example images.");
             EditorGUILayout.LabelField("Sprites required " + k_bitSpriteCount);
 
@@ -192,14 +201,12 @@ namespace UnityEngine.Tilemaps {
             // Draw actual tile sprite fields. These are used to assign the correct sprite to the tile when placing
             for (int i = 0; i < k_bitSpriteCount; i++) {
                 Rect r = (Rect)EditorGUILayout.BeginVertical();
-                tile.m_BitSprites[i] = (Sprite)EditorGUILayout.ObjectField("Sprite " + (i), tile.m_BitSprites[i], typeof(Sprite), false, null);
+                tile.m_BitSprites[i] = (Sprite)EditorGUILayout.ObjectField("Sprite " + (i), tile.m_BitSprites[i], typeof(Sprite), false);
                 spriteIcons[i].filterMode = FilterMode.Point;
                 EditorGUI.DrawPreviewTexture(new Rect((EditorGUIUtility.currentViewWidth) - (k_spriteWH * 2.5f), r.y, k_spriteWH, k_spriteWH), spriteIcons[i]);
                 EditorGUILayout.EndVertical();
                 EditorGUILayout.Space();
             }
-
-            EditorGUI.EndChangeCheck();
         }
 
         private static Texture2D Base64ToTexture(string base64) {
