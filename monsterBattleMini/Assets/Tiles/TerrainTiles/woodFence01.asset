@@ -11,5 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b6c55ee4ca9744595b32d25eaf9a8f, type: 3}
   m_Name: woodFence01
   m_EditorClassIdentifier: 
-  m_BitSprites: []
-  m_TileColliderType: 0
+  m_BitSprites:
+  - {fileID: 21300450, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300648, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300644, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300452, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300550, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300448, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300546, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 21300450, guid: 1300ea0539c172b4fb21a2a14527e532, type: 3}
+  - {fileID: 0}
+  m_TileColliderType: 1

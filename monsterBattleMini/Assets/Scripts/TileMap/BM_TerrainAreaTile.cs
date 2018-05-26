@@ -189,6 +189,8 @@ namespace UnityEngine.Tilemaps {
 
             EditorGUILayout.Space();
 
+            GUI.changed = false;
+
             // TODO: Make editor option to have individual ColliderType values for each sprite. If selected add a ColliderType popup for every sprite
             tile.m_TileColliderType = (Tile.ColliderType)EditorGUILayout.EnumPopup("Collider Type", tile.m_TileColliderType);
 
@@ -202,6 +204,10 @@ namespace UnityEngine.Tilemaps {
                 EditorGUI.DrawPreviewTexture(new Rect((EditorGUIUtility.currentViewWidth) - (k_spriteWH * 2.5f), r.y, k_spriteWH, k_spriteWH), spriteIcons[i]);
                 EditorGUILayout.EndVertical();
                 EditorGUILayout.Space();
+            }
+
+            if (GUI.changed) {
+                EditorUtility.SetDirty(tile);
             }
         }
 

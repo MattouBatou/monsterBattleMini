@@ -9,6 +9,7 @@ using UnityEditor;
 
 namespace UnityEngine.Tilemaps {
 
+    [ExecuteInEditMode]
     [Serializable]
     public class BM_PipeTile:TileBase {
 
@@ -99,11 +100,13 @@ namespace UnityEngine.Tilemaps {
                 case 73:                // nw w s
                 case 104:               // w sw s
                 case 105:               // nw w sw s
+                case 200:               // w s se
                 case 216:               // w e s se
                 case 232:               // w sw s se
                 case 72:    return 3;   // w s
 
                 case 11:                // nw n w
+                case 14:                // n ne w
                 case 15:                // nw n ne w
                 case 30:                // n ne w e
                 case 42:                // n w sw
@@ -115,6 +118,7 @@ namespace UnityEngine.Tilemaps {
                 case 23:                // nw n ne e
                 case 27:                // nw n w e
                 case 146:               // n e se
+                case 147:               // nw n e se
                 case 150:               // n ne e se
                 case 18:    return 5;   // n e
 
@@ -178,6 +182,7 @@ namespace UnityEngine.Tilemaps {
             // Reset size of sprite array if it has somehow changed (Defensive coding for future users)
             if (tile.m_BitSprites == null || tile.m_BitSprites.Length != k_bitSpriteCount) {
                 tile.m_BitSprites = new Sprite[k_bitSpriteCount];
+                EditorUtility.SetDirty(tile);
             }
         }
 
@@ -193,6 +198,8 @@ namespace UnityEngine.Tilemaps {
 
             EditorGUILayout.Space();
 
+            GUI.changed = false;
+
             // TODO: Make editor option to have individual ColliderType values for each sprite. If selected add a ColliderType popup for every sprite
             tile.m_TileColliderType = (Tile.ColliderType)EditorGUILayout.EnumPopup("Collider Type", tile.m_TileColliderType);
 
@@ -206,6 +213,10 @@ namespace UnityEngine.Tilemaps {
                 EditorGUI.DrawPreviewTexture(new Rect((EditorGUIUtility.currentViewWidth) - (k_spriteWH * 2.5f), r.y, k_spriteWH, k_spriteWH), spriteIcons[i]);
                 EditorGUILayout.EndVertical();
                 EditorGUILayout.Space();
+            }
+
+            if (GUI.changed) {
+                EditorUtility.SetDirty(tile);
             }
         }
 
