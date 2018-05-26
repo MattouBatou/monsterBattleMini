@@ -87,21 +87,29 @@ namespace UnityEngine.Tilemaps {
                 case 248:               // w e sw s se
                 case 24:    return 1;   // w e
 
+                case 86:                // n ne s
                 case 84:                // ne e s
                 case 112:               // e sw s
                 case 116:               // ne e sw s
+                case 118:               // n ne e sw s
                 case 120:               // w e sw s
                 case 124:               // ne w e sw s
+                case 127:               // nw n ne w e sw s
                 case 208:               // e s se
                 case 212:               // ne e s se
                 case 240:               // e sw s se
                 case 80:    return 2;   // e s
 
                 case 73:                // nw w s
+                case 75:                // nw n w s
                 case 104:               // w sw s
                 case 105:               // nw w sw s
                 case 200:               // w s se
+                case 201:               // nw w s se
+                case 203:               // nw n w s se
                 case 216:               // w e s se
+                case 217:               // nw w e s se
+                case 223:               // nw n ne w e s se
                 case 232:               // w sw s se
                 case 72:    return 3;   // w s
 
@@ -112,26 +120,39 @@ namespace UnityEngine.Tilemaps {
                 case 42:                // n w sw
                 case 43:                // nw n w sw
                 case 46:                // n ne w sw
+                case 62:                // n ne w e sw
+                case 106:               // n w sw s
+                case 110:               // n ne w sw s
+                case 254:               // n ne w e sw s se
                 case 10:    return 4;   // n w
 
+                case 19:                // nw n e
                 case 22:                // n ne e
                 case 23:                // nw n ne e
                 case 27:                // nw n w e
                 case 146:               // n e se
                 case 147:               // nw n e se
                 case 150:               // n ne e se
+                case 155:               // nw n w e se
+                case 210:               // n e s se
+                case 211:               // nw n e s se
+                case 251:               // nw n w e sw s se
                 case 18:    return 5;   // n e
 
                 case 20:                // ne e
                 case 144:               // e se
                 case 16:    return 6;   // e
 
+                case 96:                // sw s
+                case 192:               // s se
                 case 64:    return 7;   // s
 
                 case 8:                 // w
                 case 40:                // w sw
                 case 9:     return 8;   // nw w
 
+                case 3:                 // nw n
+                case 6:                 // n ne
                 case 2:     return 9;   // n
             }
             return 0;
