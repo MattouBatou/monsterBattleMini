@@ -13,33 +13,33 @@ namespace Rewired.Integration.PlayerControls {
 
         [Header("Action Mappings")]
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game Attack action.")]
-        private string _attackAction = "Attack";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game Attack action.")]
+        //private string _attackAction = "Attack";
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game Confirm action.")]
-        private string _confirmAction = "Confirm";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game Confirm action.")]
+        //private string _confirmAction = "Confirm";
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game Cancel action.")]
-        private string _cancelAction = "Cancel";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game Cancel action.")]
+        //private string _cancelAction = "Cancel";
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game Start action.")]
-        private string _startAction = "Start";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game Start action.")]
+        //private string _startAction = "Start";
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game Select action.")]
-        private string _selectAction = "Select";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game Select action.")]
+        //private string _selectAction = "Select";
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game MoveX action.")]
-        private string _moveXAction = "MoveX";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game MoveX action.")]
+        //private string _moveXAction = "MoveX";
 
-        [SerializeField]
-        [Tooltip("The string name of the Rewired Action to use for the game MoveY action.")]
-        private string _moveYAction = "MoveY";
+        //[SerializeField]
+        //[Tooltip("The string name of the Rewired Action to use for the game MoveY action.")]
+        //private string _moveYAction = "MoveY";
 
         [SerializeField]
         [Tooltip("The string name of the Rewired Action to use for the game Up action.")]
@@ -72,13 +72,13 @@ namespace Rewired.Integration.PlayerControls {
 
             // Cache Rewired Action ids for speed
             _actionIds = new Dictionary<int, int>();
-            AddRewiredActionId(_actionIds, _attackAction, global::InputAction.Attack);
-            AddRewiredActionId(_actionIds, _confirmAction, global::InputAction.Confirm);
-            AddRewiredActionId(_actionIds, _cancelAction, global::InputAction.Cancel);
-            AddRewiredActionId(_actionIds, _startAction, global::InputAction.Start);
-            AddRewiredActionId(_actionIds, _selectAction, global::InputAction.Select);
-            AddRewiredActionId(_actionIds, _moveXAction, global::InputAction.MoveX);
-            AddRewiredActionId(_actionIds, _moveYAction, global::InputAction.MoveY);
+            //AddRewiredActionId(_actionIds, _attackAction, global::InputAction.Attack);
+            //AddRewiredActionId(_actionIds, _confirmAction, global::InputAction.Confirm);
+            //AddRewiredActionId(_actionIds, _cancelAction, global::InputAction.Cancel);
+            //AddRewiredActionId(_actionIds, _startAction, global::InputAction.Start);
+            //AddRewiredActionId(_actionIds, _selectAction, global::InputAction.Select);
+            //AddRewiredActionId(_actionIds, _moveXAction, global::InputAction.MoveX);
+            //AddRewiredActionId(_actionIds, _moveYAction, global::InputAction.MoveY);
             AddRewiredActionId(_actionIds, _upAction, global::InputAction.Up);
             AddRewiredActionId(_actionIds, _downAction, global::InputAction.Down);
             AddRewiredActionId(_actionIds, _leftAction, global::InputAction.Left);

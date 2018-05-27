@@ -31,11 +31,9 @@ public class PlayerMovement:MonoBehaviour {
     }
 
     public void Move() {
-        isMoving = false;
         body.velocity = new Vector2(0, 0);
 
-        if (moveInputDirection.x != 0 || moveInputDirection.y != 0) {
-            isMoving = true;
+        if (isMoving) {
 
             lastInputDirection.x = moveInputDirection.x;
             lastInputDirection.y = moveInputDirection.y;
@@ -52,6 +50,12 @@ public class PlayerMovement:MonoBehaviour {
         if (input.GetButton(playerId, InputAction.Down)) { moveInputDirection += Vector2.down; }
         if (input.GetButton(playerId, InputAction.Left)) { moveInputDirection += Vector2.left; }
         if (input.GetButton(playerId, InputAction.Right)) { moveInputDirection += Vector2.right; }
+
+        if(moveInputDirection != Vector2.zero) {
+            isMoving = true;
+        } else {
+            isMoving = false;
+        }
     }
 
     /// <summary>

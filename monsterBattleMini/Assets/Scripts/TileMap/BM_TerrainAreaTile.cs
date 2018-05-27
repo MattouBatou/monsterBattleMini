@@ -126,7 +126,7 @@ namespace UnityEngine.Tilemaps {
         }
 
 #if UNITY_EDITOR
-        [MenuItem("Assets/Create/BM_TerrainAreaTile")]
+        [MenuItem("Assets/Create/Custom Tile/BM_TerrainAreaTile")]
         public static void CreateBM_TerrainAreaTile() {
             string path = EditorUtility.SaveFilePanelInProject("Save BitMask Terrain Area Tile", "New Bitmask Terrain Tile", "asset", "Save BitMask Terrain Area Tile", "Assets");
             if (path == "") {

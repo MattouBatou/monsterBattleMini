@@ -159,7 +159,7 @@ namespace UnityEngine.Tilemaps {
         }
 
 #if UNITY_EDITOR
-        [MenuItem("Assets/Create/BM_PipeTile")]
+        [MenuItem("Assets/Create/Custom Tile/BM_PipeTile")]
         public static void CreateBM_PipeTile() {
             string path = EditorUtility.SaveFilePanelInProject("Save BitMask Pipe Tile", "New Bitmask Pipe Tile", "asset", "Save BitMask Pipe Tile", "Assets");
             if (path == "") {

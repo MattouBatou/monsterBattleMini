@@ -93,7 +93,7 @@ namespace UnityEngine.Tilemaps {
         }
 
 #if UNITY_EDITOR
-        [MenuItem("Assets/Create/BM_BasicFenceTile")]
+        [MenuItem("Assets/Create/Custom Tile/BM_BasicFenceTile")]
         public static void CreateBM_BasicFenceTile() {
             string path = EditorUtility.SaveFilePanelInProject("Save BitMask Basic Fence Tile", "New Bitmask Basic Fence Tile", "asset", "Save BitMask Basic Fence Tile", "Assets");
             if (path == "") {
