@@ -13,9 +13,9 @@ namespace Rewired.Integration.PlayerControls {
 
         [Header("Action Mappings")]
 
-        //[SerializeField]
-        //[Tooltip("The string name of the Rewired Action to use for the game Attack action.")]
-        //private string _attackAction = "Attack";
+        [SerializeField]
+        [Tooltip("The string name of the Rewired Action to use for the game Attack action.")]
+        private string _attackAction = "Attack";
 
         //[SerializeField]
         //[Tooltip("The string name of the Rewired Action to use for the game Confirm action.")]
@@ -72,7 +72,7 @@ namespace Rewired.Integration.PlayerControls {
 
             // Cache Rewired Action ids for speed
             _actionIds = new Dictionary<int, int>();
-            //AddRewiredActionId(_actionIds, _attackAction, global::InputAction.Attack);
+            AddRewiredActionId(_actionIds, _attackAction, global::InputAction.Attack);
             //AddRewiredActionId(_actionIds, _confirmAction, global::InputAction.Confirm);
             //AddRewiredActionId(_actionIds, _cancelAction, global::InputAction.Cancel);
             //AddRewiredActionId(_actionIds, _startAction, global::InputAction.Start);

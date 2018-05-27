@@ -212,6 +212,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4617302982845554, guid: 6d7148ca6b0b46e4f8715c392afac1da,
     type: 2}
   m_PrefabInternal: {fileID: 694291207}
+--- !u!1 &241369350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1493942400507170, guid: 6d7148ca6b0b46e4f8715c392afac1da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659392566}
+--- !u!114 &241369356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241369350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b86c0bbe7edb5c469ee5cb5b3eca570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &255344112
 GameObject:
   m_ObjectHideFlags: 0
@@ -25784,6 +25800,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 4
+      _name: Attack
+      _type: 1
+      _descriptiveName: Attack
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -25793,7 +25818,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 00000000010000000200000003000000
+        actionIds: 0000000001000000020000000300000004000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -25898,6 +25923,17 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 32
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     - id: 1
       categoryId: 0
       layoutId: 1
@@ -25949,11 +25985,22 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 113
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 3
-    actionIdCounter: 4
+    actionIdCounter: 5
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -25992,6 +26039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263b93f7e6d48dc40b4aa51263ab0a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackAction: Attack
   _upAction: Up
   _downAction: Down
   _leftAction: Left

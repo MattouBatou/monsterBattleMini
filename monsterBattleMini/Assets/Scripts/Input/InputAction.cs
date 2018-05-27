@@ -2,7 +2,7 @@
     None = 0,
     //MoveX = 1,
     //MoveY = 2,
-    //Attack = 3,
+    Attack = 3,
     //Confirm = 4,
     //Cancel = 5,
     //Start = 6,
