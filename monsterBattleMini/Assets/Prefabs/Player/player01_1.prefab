@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4617302982845554}
   - component: {fileID: 212932092384405740}
   - component: {fileID: 95115255575238892}
+  - component: {fileID: 114829801154924034}
   - component: {fileID: 114293175070891278}
   - component: {fileID: 114475530292161338}
   - component: {fileID: 61207938540952112}
   - component: {fileID: 50642942964362962}
-  - component: {fileID: 114194074598154672}
   m_Layer: 0
   m_Name: player01_1
   m_TagString: Player
@@ -78,10 +78,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: -0.7}
+  m_Offset: {x: 0, y: -0.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.453125, y: 0.453125}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -109,18 +109,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114194074598154672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1493942400507170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3165a6db5e8e8cf429e8e5bd83d19697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxCollider2D: {fileID: 0}
 --- !u!114 &114293175070891278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,8 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b485419b874eb64eabf986536d74155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
-  walkSpeed: 7
 --- !u!114 &114475530292161338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +131,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3165a6db5e8e8cf429e8e5bd83d19697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider2D: {fileID: 0}
+--- !u!114 &114829801154924034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1493942400507170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7519e871dfa3798479b8126643697b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isMoving: 0
+  m_body: {fileID: 0}
+  m_attackBox: {fileID: 0}
+  m_animator: {fileID: 0}
+  m_playerId: 0
+  m_walkSpeed: 7
 --- !u!212 &212932092384405740
 SpriteRenderer:
   m_ObjectHideFlags: 1

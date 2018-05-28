@@ -4,44 +4,41 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
-    private IInputManager input;
-    private PlayerMovement m_player;
-    private GameObject player;
-    private int m_playerId = -1;
-    public BoxCollider2D boxCollider2D;
+    private Player m_player;
+    private BoxCollider2D m_attackBox;
+    private bool attacking = false;
 
-	void Start () {
-        input = InputManager.instance;
+	private void Start () {
 
-        m_player = (PlayerMovement)gameObject.GetComponent("PlayerMovement");
-
-        if (m_player != null) {
-            if (m_player.playerId >= 0) {
-                m_playerId = m_player.playerId;
-            }
-        }
-
-        player = gameObject;
-
-        AddBoxCollider2D(ref player, Vector2.one, Vector2.zero);
+        m_player = gameObject.GetComponent<Player>();
+        m_attackBox = m_player.m_attackBox.GetComponent<BoxCollider2D>();
     }
 
 
-	void Update () {
+	private void FixedUpdate () {
         GetInput();
     }
 
     private void GetInput() {
-        if (input.GetButton(m_playerId, InputAction.Attack)) {
-            // Do something
+        if (m_player != null && m_attackBox != null && m_player.m_input != null) {
+            if (!attacking) {
+                if (m_player.m_input.GetButtonDown(m_player.m_playerId, InputAction.Attack)) {
+                    StartCoroutine(DisableCollider());
+                }
+            } else {
+                if (m_player.m_input.GetButtonUp(m_player.m_playerId, InputAction.Attack)) {
+                    m_attackBox.enabled = false;
+                    attacking = false;
+                    Debug.Log("Button up");
+                }
+            }
         }
     }
 
-    private void AddBoxCollider2D(ref GameObject player, Vector2 size, Vector2 offset) {
-        BoxCollider2D boxCollider2D = player.AddComponent<BoxCollider2D>();
-        boxCollider2D.size = size;
-        boxCollider2D.offset = offset;
+    private IEnumerator DisableCollider() {
+        m_attackBox.enabled = true;
+        attacking = true;
+        yield return new WaitForSeconds(0.1f);
+        m_attackBox.enabled = false;
     }
-
-
 }

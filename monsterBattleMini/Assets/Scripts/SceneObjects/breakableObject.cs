@@ -8,7 +8,7 @@ public class breakableObject : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         switch (collision.tag) {
-            case "Player":
+            case "PlayerAttackBox":
                 reduceHealth(-1);
                 break;
         }
