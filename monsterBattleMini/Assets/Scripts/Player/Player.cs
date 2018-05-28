@@ -17,6 +17,8 @@ public class Player:MonoBehaviour {
     public GameObject m_attackBox; // TODO: Make attack box class
     [HideInInspector]
     public Animator m_animator;
+    [HideInInspector]
+    public float m_attackBox_time;
 
     public int m_playerId = 0;
     public float m_walkSpeed = 7f;
@@ -29,6 +31,8 @@ public class Player:MonoBehaviour {
         AddBoxCollider2D(ref m_attackBox, new Vector2(0.5f, 0.5f), Vector2.zero, true);
         m_attackBox.transform.parent = gameObject.transform;
         m_attackBox.transform.localPosition = Vector3.zero;
+
+        m_attackBox_time = 0.05f;
     }
 
     private void Start() {

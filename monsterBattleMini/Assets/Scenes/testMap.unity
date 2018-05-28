@@ -25071,23 +25071,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 61310133638232810, guid: df8d522813035514a93d48fbdb31f0fe,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Offset.x
       value: -0.030031681
       objectReference: {fileID: 0}
-    - target: {fileID: 61310133638232810, guid: df8d522813035514a93d48fbdb31f0fe,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Size.x
       value: 0.81980896
       objectReference: {fileID: 0}
-    - target: {fileID: 61310133638232810, guid: df8d522813035514a93d48fbdb31f0fe,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61310133638232810, guid: df8d522813035514a93d48fbdb31f0fe,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Size.y
       value: 0.87987256
       objectReference: {fileID: 0}
@@ -31535,6 +31531,16 @@ Prefab:
         type: 2}
       propertyPath: m_Offset.y
       value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50642942964362962, guid: 6d7148ca6b0b46e4f8715c392afac1da,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50642942964362962, guid: 6d7148ca6b0b46e4f8715c392afac1da,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d7148ca6b0b46e4f8715c392afac1da, type: 2}

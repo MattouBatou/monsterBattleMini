@@ -18,13 +18,9 @@ public class PlayerMovement:MonoBehaviour {
 
     private void Update() {
         GetInput();
-    }
-
-    private void FixedUpdate() {
         Move();
         SendAnimData();
     }
-
 
     public void Move() {
         m_player.m_body.velocity = new Vector2(0, 0);

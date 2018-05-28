@@ -6,10 +6,12 @@ public class breakableObject : MonoBehaviour {
 
     public int m_health = 2;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        switch (collision.tag) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch (other.tag) {
             case "PlayerAttackBox":
                 reduceHealth(-1);
+                // TODO: Make PlayerAttackBox a class that manages disabling itself when colliding with subscribed colliders via tags.
+                other.enabled = false;
                 break;
         }
     }
