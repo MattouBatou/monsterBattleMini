@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour {
 
     private void Awake() {
         m_players = GameObject.FindGameObjectsWithTag("Player");
-        Array.Sort(m_players, CompareObNames);
+        Array.Sort(m_players, CompareObjNames);
 
         for (int i = 0; i < m_players.Length; i++) {
             Player player = m_players[i].GetComponent<Player>();
@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    private int CompareObNames(GameObject x, GameObject y) {
-        return x.name.CompareTo(y.name);
+    private int CompareObjNames(GameObject a, GameObject b) {
+        return a.name.CompareTo(b.name);
     }
 }

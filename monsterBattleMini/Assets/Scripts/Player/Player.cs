@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-///<summary>
-/// Sets up Player members
-///</summary>
 public class Player:MonoBehaviour {
 
     [HideInInspector]

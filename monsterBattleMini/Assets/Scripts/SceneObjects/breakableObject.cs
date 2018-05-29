@@ -102,40 +102,32 @@ public class breakableObject : MonoBehaviour {
         if (collisionDirectionDiff.x < 0 && collisionDirectionDiff.y < 0) {
 
             if (Mathf.Abs(collisionDirectionDiff.x) > Mathf.Abs(collisionDirectionDiff.y)) {
-                print("hit mostly right");
                 collisionDirection = direction.right;
             } else {
-                print("hit mostly top");
                 collisionDirection = direction.top;
             }
 
         } else if (collisionDirectionDiff.x > 0 && collisionDirectionDiff.y < 0) {
 
             if (Mathf.Abs(collisionDirectionDiff.x) > Mathf.Abs(collisionDirectionDiff.y)) {
-                print("hit mostly left");
                 collisionDirection = direction.left;
             } else {
-                print("hit mostly top");
                 collisionDirection = direction.top;
             }
 
         } else if (collisionDirectionDiff.x < 0 && collisionDirectionDiff.y > 0) {
 
             if (Mathf.Abs(collisionDirectionDiff.x) > Mathf.Abs(collisionDirectionDiff.y)) {
-                print("hit mostly right");
                 collisionDirection = direction.right;
             } else {
-                print("hit mostly bottom");
                 collisionDirection = direction.bottom;
             }
 
         } else if (collisionDirectionDiff.x > 0 && collisionDirectionDiff.y > 0) {
 
             if (Mathf.Abs(collisionDirectionDiff.x) > Mathf.Abs(collisionDirectionDiff.y)) {
-                print("hit mostly left");
                 collisionDirection = direction.left;
             } else {
-                print("hit mostly bottom");
                 collisionDirection = direction.bottom;
             }
 

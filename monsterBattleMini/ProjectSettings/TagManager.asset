@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Breakable
   - PlayerAttackBox
+  - Mob
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player1 Cam
   - Player2 Cam
   - Collidable
-  - 
+  - Mob
   - 
   - 
   - 
@@ -60,6 +61,9 @@ TagManager:
     locked: 0
   - name: Decoration 1
     uniqueID: 1369887131
+    locked: 0
+  - name: Mob
+    uniqueID: 4087949303
     locked: 0
   - name: Player
     uniqueID: 2015904471
