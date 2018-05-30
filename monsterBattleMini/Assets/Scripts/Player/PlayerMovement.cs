@@ -27,37 +27,33 @@ public class PlayerMovement:MonoBehaviour {
 
         if (m_player.m_isMoving) {
 
-            m_lastInputDirection.x = m_moveInputDirection.x;
-            m_lastInputDirection.y = m_moveInputDirection.y;
-
+            m_lastInputDirection = m_moveInputDirection;
             m_player.m_body.velocity = m_moveInputDirection.normalized * m_player.m_walkSpeed;
         }
     }
 
     private void LateUpdate() {
 
+        // Reposition Attack Hitbox to face current direction.
         if (m_attackBox != null) {
+            Vector2 offset = m_attackBox.offset;
             if (m_moveInputDirection.x < 0f) {
 
-                Vector2 offset = m_attackBox.offset;
                 offset.x = -0.5f;
                 offset.y = -0.2f;
                 m_attackBox.offset = offset;
             }else if (m_moveInputDirection.x > 0f) {
 
-                Vector2 offset = m_attackBox.offset;
                 offset.x = 0.5f;
                 offset.y = -0.2f;
                 m_attackBox.offset = offset;
             }else if (m_moveInputDirection.y < 0f) {
 
-                Vector2 offset = m_attackBox.offset;
                 offset.x = 0.0f;
                 offset.y = -0.7f;
                 m_attackBox.offset = offset;
             } else if (m_moveInputDirection.y > 0f) {
 
-                Vector2 offset = m_attackBox.offset;
                 offset.x = 0.0f;
                 offset.y = 0.3f;
                 m_attackBox.offset = offset;
