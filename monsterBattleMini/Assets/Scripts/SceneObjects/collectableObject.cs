@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class collectableObject : MonoBehaviour {
+public class CollectableObject : MonoBehaviour {
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        switch (collision.tag) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch (other.tag) {
             case "Player":
-                Debug.Log("Collided with player");
-                GameObject.Destroy(gameObject);
+                if (tag == "Collectable") {
+                    GameObject.Destroy(gameObject);
+                } else if(tag == "Mob"){
+                    transform.position = other.transform.position;
+                }
+
+                Debug.Log(tag + " collided with player");
                 break;
         }
     }
