@@ -16,9 +16,12 @@ public class PlayerMovement:MonoBehaviour {
         m_lastInputDirection = Vector2.zero;
     }
 
+    private void FixedUpdate() {
+        Move();
+    }
+
     private void Update() {
         GetInput();
-        Move();
         SendAnimData();
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Npc : MonoBehaviour {
 
     [HideInInspector]
-    public bool m_isMoving = false;
+    public bool m_isMoving;
     [HideInInspector]
     public Rigidbody2D m_body;
     [HideInInspector]
@@ -15,6 +15,7 @@ public class Npc : MonoBehaviour {
     public float m_walkSpeed = 7f;
 
 	private void Start () {
+        m_isMoving = false;
         m_animator = gameObject.GetComponent<Animator>();
         m_body = gameObject.GetComponent<Rigidbody2D>();
     }

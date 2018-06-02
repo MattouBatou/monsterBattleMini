@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212811193818632048}
   - component: {fileID: 95002438789198088}
   - component: {fileID: 61962755183558266}
-  - component: {fileID: 50105182303629078}
+  - component: {fileID: 50026020238047632}
   - component: {fileID: 114895997497718698}
   - component: {fileID: 114625904612649748}
   - component: {fileID: 114488962816685064}
@@ -46,7 +46,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50105182303629078
+--- !u!50 &50026020238047632
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -103,7 +103,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 15215f4cb3ba5b3459b2b4a72c2bd281, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac11780456eb6bb48a16729592678f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npc: {fileID: 0}
 --- !u!114 &114625904612649748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9611bcbebe051ec45917a02e95c94273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_followTarget: {fileID: 0}
   m_directionVectors: []
   m_direction: 0
 --- !u!114 &114895997497718698

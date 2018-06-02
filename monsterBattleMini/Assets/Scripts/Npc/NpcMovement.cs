@@ -17,6 +17,9 @@ public class NpcMovement:MonoBehaviour {
     }
 
     [HideInInspector]
+    public Rigidbody2D m_followTarget;
+
+    [HideInInspector]
     public Vector2[] m_directionVectors;
 
     [HideInInspector]
@@ -42,11 +45,15 @@ public class NpcMovement:MonoBehaviour {
         m_idleDirectionWaitTime = Random.Range(1f, 5f);
     }
 
-	void Update () {
+    private void FixedUpdate() {
+        Move();
+        GetMove();
+        SendAnimData();
+    }
+
+    void Update () {
         SetMoveDirection();
         SetIdleFacingDirection();
-        Move();
-        SendAnimData();
 	}
 
 
@@ -68,8 +75,45 @@ public class NpcMovement:MonoBehaviour {
         }
     }
 
+    private void GetMove() {
+        m_moveDirection = Vector2.zero;
+
+        if (m_npc.m_body) {
+            if (m_npc.m_body.velocity.x < 0f) {
+                m_direction = direction.left;
+                m_moveDirection += m_directionVectors[(int)m_direction];
+            }
+            if (m_npc.m_body.velocity.x > 0f) {
+                m_direction = direction.right;
+                m_moveDirection += m_directionVectors[(int)m_direction];
+            }
+            if (m_npc.m_body.velocity.y < 0f) {
+                m_direction = direction.down;
+                m_moveDirection += m_directionVectors[(int)m_direction];
+            }
+            if (m_npc.m_body.velocity.y > 0f) {
+                m_direction = direction.up;
+                m_moveDirection += m_directionVectors[(int)m_direction];
+            }
+        }
+
+        if (m_moveDirection != Vector2.zero) {
+            m_npc.m_isMoving = true;
+        } else {
+            m_npc.m_isMoving = false;
+        }
+    }
+
     private void Move() {
-        m_npc.m_body.velocity = new Vector2(0f, 0f);
+
+        if (m_followTarget != null) {
+            m_npc.m_body.velocity = m_followTarget.velocity;
+            Debug.Log("Player vel: " + m_followTarget.velocity);
+            Debug.Log("Mob vel: " + m_npc.m_body.velocity);
+        } else {
+            //m_npc.m_body.velocity = Vector2.zero;
+           // Debug.Log("zero velocity");
+        }
 
         if (m_npc.m_isMoving) {
             m_lastDirection = m_moveDirection;

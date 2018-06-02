@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class CollectableObject : MonoBehaviour {
 
+    [HideInInspector]
+    public NpcMovement npc;
+
+    private void Start() {
+        npc = gameObject.GetComponent<NpcMovement>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
+
         switch (other.tag) {
             case "Player":
                 if (tag == "Collectable") {
                     GameObject.Destroy(gameObject);
                 } else if(tag == "Mob"){
-                    transform.position = other.transform.position;
+                    if(npc.m_followTarget == null) {
+                        npc.m_followTarget = other.gameObject.GetComponent<Rigidbody2D>();
+                    }
                 }
 
-                Debug.Log(tag + " collided with player");
                 break;
         }
     }
