@@ -120,8 +120,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isMoving: 0
   m_body: {fileID: 0}
+  m_bodyBox: {fileID: 0}
   m_hitbox: {fileID: 0}
   m_animator: {fileID: 0}
+  m_directionVectors: []
+  m_direction: 0
   m_followTarget: {fileID: 0}
   m_npcId: 0
   m_walkSpeed: 7

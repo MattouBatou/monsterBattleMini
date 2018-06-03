@@ -6,7 +6,8 @@ public class PlayerMovement:MonoBehaviour {
 
     private Player m_player;
     private BoxCollider2D m_attackBox;
-    private Vector2 m_lastInputDirection;
+    [HideInInspector]
+    public Vector2 m_lastInputDirection;
     private Vector2 m_moveInputDirection;
 
     private void Start() {

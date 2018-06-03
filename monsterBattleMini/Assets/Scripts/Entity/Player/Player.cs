@@ -25,10 +25,9 @@ public class Player:Entity {
         m_attackBox_time = 0.05f;
     }
 
-    private void Start() {
+    public override void Start() {
+        base.Start();
         m_input = InputManager.instance;
-        m_animator = gameObject.GetComponent<Animator>();
-        m_body = gameObject.GetComponent<Rigidbody2D>();
 
         Physics2D.IgnoreCollision(m_body.GetComponent<BoxCollider2D>(), m_attackBox.GetComponent<BoxCollider2D>());
     }

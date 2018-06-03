@@ -13,10 +13,15 @@ public abstract class NpcMovement:MonoBehaviour {
     [HideInInspector]
     public Vector2 m_moveDirection;
 
-    private float m_idleDirectionChangeTimer;
-    private float m_idleDirectionWaitTime;
+    [HideInInspector]
+    public float m_moveDeadZone;
 
-	protected void Start () {
+    [HideInInspector]
+    protected float m_idleDirectionChangeTimer;
+    [HideInInspector]
+    protected float m_idleDirectionWaitTime;
+
+    protected virtual void Start () {
 
         m_npc = gameObject.GetComponent<Npc>();
         m_lastDirection = m_moveDirection = Vector2.zero;
@@ -25,6 +30,8 @@ public abstract class NpcMovement:MonoBehaviour {
 
         m_idleDirectionChangeTimer = 0f;
         m_idleDirectionWaitTime = Random.Range(1f, 5f);
+
+        m_moveDeadZone = 0.3f;
     }
 
     protected void FixedUpdate() {
@@ -34,15 +41,15 @@ public abstract class NpcMovement:MonoBehaviour {
     }
 
     protected void Update () {
-        SetMoveDirection();
+        //SetMoveDirection();
         SetIdleFacingDirection();
 	}
 
 
-    protected void SetMoveDirection() {
-        m_moveDirection = Vector2.zero;
+    //protected void SetMoveDirection() {
+    //    m_moveDirection = Vector2.zero;
 
-    }
+    //}
 
     protected void SetIdleFacingDirection() {
         if (!m_npc.m_isMoving && m_idleDirectionChangeTimer == 0f) {
@@ -61,19 +68,19 @@ public abstract class NpcMovement:MonoBehaviour {
         m_moveDirection = Vector2.zero;
 
         if (m_npc.m_body) {
-            if (m_npc.m_body.velocity.x < 0f) {
+            if (m_npc.m_body.velocity.x < -m_moveDeadZone) {
                 m_npc.m_direction = Entity.Direction.left;
                 m_moveDirection += m_npc.m_directionVectors[(int)m_npc.m_direction];
             }
-            if (m_npc.m_body.velocity.x > 0f) {
+            if (m_npc.m_body.velocity.x > m_moveDeadZone) {
                 m_npc.m_direction = Entity.Direction.right;
                 m_moveDirection += m_npc.m_directionVectors[(int)m_npc.m_direction];
             }
-            if (m_npc.m_body.velocity.y < 0f) {
+            if (m_npc.m_body.velocity.y < -m_moveDeadZone) {
                 m_npc.m_direction = Entity.Direction.down;
                 m_moveDirection += m_npc.m_directionVectors[(int)m_npc.m_direction];
             }
-            if (m_npc.m_body.velocity.y > 0f) {
+            if (m_npc.m_body.velocity.y > m_moveDeadZone) {
                 m_npc.m_direction = Entity.Direction.up;
                 m_moveDirection += m_npc.m_directionVectors[(int)m_npc.m_direction];
             }

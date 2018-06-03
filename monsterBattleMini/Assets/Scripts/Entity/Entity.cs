@@ -9,6 +9,8 @@ public abstract class Entity : MonoBehaviour {
     [HideInInspector]
     public Rigidbody2D m_body;
     [HideInInspector]
+    public BoxCollider2D m_bodyBox;
+    [HideInInspector]
     public GameObject m_hitbox;
     [HideInInspector]
     public Animator m_animator;
@@ -25,6 +27,12 @@ public abstract class Entity : MonoBehaviour {
 
     [HideInInspector]
     public Direction m_direction;
+
+    public virtual void Start() {
+        m_animator = gameObject.GetComponent<Animator>();
+        m_body = gameObject.GetComponent<Rigidbody2D>();
+        m_bodyBox = gameObject.GetComponent<BoxCollider2D>();
+    }
 
     public void AddBoxCollider2D(ref GameObject go, string goName, string goTag, Vector2 size, Vector2 offset, bool isTrigger, bool enabled) {
         go = new GameObject(goName, typeof(BoxCollider2D));
