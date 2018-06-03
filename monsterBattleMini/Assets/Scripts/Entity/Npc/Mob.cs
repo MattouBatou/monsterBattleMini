@@ -25,7 +25,7 @@ public class Mob : Npc {
             case "PlayerHitBox":
 
                 if (m_followTarget == null && other.transform.parent.gameObject) {
-                    m_followTarget = other.transform.parent.gameObject.GetComponent<Rigidbody2D>();
+                    m_followTarget = other.transform.parent.gameObject.GetComponent<Player>();
                 }
 
             break;

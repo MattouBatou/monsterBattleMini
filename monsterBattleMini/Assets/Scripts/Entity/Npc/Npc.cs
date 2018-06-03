@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Npc : Entity {
 
     [HideInInspector]
-    public Rigidbody2D m_followTarget;
+    public Entity m_followTarget;
 
     public int m_npcId = 0;
     public float m_walkSpeed = 7f;

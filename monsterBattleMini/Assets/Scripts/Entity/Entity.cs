@@ -12,6 +12,19 @@ public abstract class Entity : MonoBehaviour {
     public GameObject m_hitbox;
     [HideInInspector]
     public Animator m_animator;
+    [HideInInspector]
+    public enum Direction {
+        up,
+        down,
+        left,
+        right
+    }
+
+    [HideInInspector]
+    public Vector2[] m_directionVectors;
+
+    [HideInInspector]
+    public Direction m_direction;
 
     public void AddBoxCollider2D(ref GameObject go, string goName, string goTag, Vector2 size, Vector2 offset, bool isTrigger, bool enabled) {
         go = new GameObject(goName, typeof(BoxCollider2D));
@@ -36,5 +49,16 @@ public abstract class Entity : MonoBehaviour {
 
         go.transform.parent = gameObject.transform;
         go.transform.Translate(gameObject.transform.position);
+    }
+
+    public void SetDirectionConstants() {
+        m_direction = Entity.Direction.down;
+
+        m_directionVectors = new Vector2[4];
+
+        m_directionVectors[(int)Entity.Direction.up] = Vector2.up;
+        m_directionVectors[(int)Entity.Direction.down] = Vector2.down;
+        m_directionVectors[(int)Entity.Direction.left] = Vector2.left;
+        m_directionVectors[(int)Entity.Direction.right] = Vector2.right;
     }
 }

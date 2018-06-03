@@ -14,6 +14,8 @@ public class PlayerMovement:MonoBehaviour {
         m_player = gameObject.GetComponent<Player>();
         m_attackBox = m_player.m_attackBox.GetComponent<BoxCollider2D>();
         m_lastInputDirection = Vector2.zero;
+
+        m_player.SetDirectionConstants();
     }
 
     private void FixedUpdate() {
@@ -68,10 +70,22 @@ public class PlayerMovement:MonoBehaviour {
         m_moveInputDirection = Vector2.zero;
 
         if (m_player != null && m_player.m_input != null) {
-            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Up)) { m_moveInputDirection += Vector2.up; }
-            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Down)) { m_moveInputDirection += Vector2.down; }
-            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Left)) { m_moveInputDirection += Vector2.left; }
-            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Right)) { m_moveInputDirection += Vector2.right; }
+            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Up)) {
+                m_player.m_direction = Entity.Direction.up;
+                m_moveInputDirection += Vector2.up;
+            }
+            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Down)) {
+                m_player.m_direction = Entity.Direction.down;
+                m_moveInputDirection += Vector2.down;
+            }
+            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Left)) {
+                m_player.m_direction = Entity.Direction.left;
+                m_moveInputDirection += Vector2.left;
+            }
+            if (m_player.m_input.GetButton(m_player.m_playerId, InputAction.Right)) {
+                m_player.m_direction = Entity.Direction.right;
+                m_moveInputDirection += Vector2.right;
+            }
 
             if (m_moveInputDirection != Vector2.zero) {
                 m_player.m_isMoving = true;
