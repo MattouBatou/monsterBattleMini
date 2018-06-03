@@ -26,7 +26,7 @@ public class PlayerMovement:MonoBehaviour {
     }
 
     public void Move() {
-        m_player.m_body.velocity = new Vector2(0, 0);
+        m_player.m_body.velocity = Vector2.zero;
 
         if (m_player.m_isMoving) {
 

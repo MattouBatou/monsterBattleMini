@@ -8,6 +8,8 @@ TagManager:
   - PlayerAttackBox
   - Mob
   - Collectable
+  - MobHitBox
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX

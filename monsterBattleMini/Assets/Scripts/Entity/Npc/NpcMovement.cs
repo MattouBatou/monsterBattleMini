@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NpcMovement:MonoBehaviour {
+public abstract class NpcMovement:MonoBehaviour {
 
-    private Npc m_npc;
+    [HideInInspector]
+    public Npc m_npc;
+    public Rigidbody2D m_followTarget;
     private Vector2 m_lastDirection;
     private Vector2 m_moveDirection;
 
@@ -17,9 +19,6 @@ public class NpcMovement:MonoBehaviour {
     }
 
     [HideInInspector]
-    public Rigidbody2D m_followTarget;
-
-    [HideInInspector]
     public Vector2[] m_directionVectors;
 
     [HideInInspector]
@@ -28,7 +27,7 @@ public class NpcMovement:MonoBehaviour {
     private float m_idleDirectionChangeTimer;
     private float m_idleDirectionWaitTime;
 
-	void Start () {
+	protected void Start () {
 
         m_npc = gameObject.GetComponent<Npc>();
         m_lastDirection = m_moveDirection = Vector2.zero;
@@ -45,24 +44,24 @@ public class NpcMovement:MonoBehaviour {
         m_idleDirectionWaitTime = Random.Range(1f, 5f);
     }
 
-    private void FixedUpdate() {
+    protected void FixedUpdate() {
         Move();
         GetMove();
         SendAnimData();
     }
 
-    void Update () {
+    protected void Update () {
         SetMoveDirection();
         SetIdleFacingDirection();
 	}
 
 
-    private void SetMoveDirection() {
+    protected void SetMoveDirection() {
         m_moveDirection = Vector2.zero;
 
     }
 
-    private void SetIdleFacingDirection() {
+    protected void SetIdleFacingDirection() {
         if (!m_npc.m_isMoving && m_idleDirectionChangeTimer == 0f) {
             m_direction = (direction)Mathf.RoundToInt(Random.Range(0f, 3f));
         }
@@ -75,7 +74,7 @@ public class NpcMovement:MonoBehaviour {
         }
     }
 
-    private void GetMove() {
+    protected void GetMove() {
         m_moveDirection = Vector2.zero;
 
         if (m_npc.m_body) {
@@ -104,15 +103,11 @@ public class NpcMovement:MonoBehaviour {
         }
     }
 
-    private void Move() {
+    protected virtual void Move() {
+        m_npc.m_body.velocity = Vector2.zero;
 
-        if (m_followTarget != null) {
-            m_npc.m_body.velocity = m_followTarget.velocity;
-            Debug.Log("Player vel: " + m_followTarget.velocity);
-            Debug.Log("Mob vel: " + m_npc.m_body.velocity);
-        } else {
-            //m_npc.m_body.velocity = Vector2.zero;
-           // Debug.Log("zero velocity");
+        if (m_npc.m_followTarget != null) {
+            m_npc.m_body.velocity = m_npc.m_followTarget.velocity;
         }
 
         if (m_npc.m_isMoving) {
@@ -120,7 +115,7 @@ public class NpcMovement:MonoBehaviour {
         }
     }
 
-    private void SendAnimData() {
+    protected void SendAnimData() {
         m_npc.m_animator.SetFloat("yDirection", m_moveDirection.y);
         m_npc.m_animator.SetFloat("xDirection", m_moveDirection.x);
         m_npc.m_animator.SetFloat("lastYDirection", m_lastDirection.y);
