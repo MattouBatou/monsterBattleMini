@@ -14,6 +14,8 @@ public class BreakableObject : MonoBehaviour {
     private float shakeTimer = 0.0f;
     private Vector2 posBeforeShake;
     private Vector2 collisionDirectionDiff;
+    [HideInInspector]
+    public SpriteRenderer m_renderer;
 
     private enum direction {
         top,
@@ -31,6 +33,7 @@ public class BreakableObject : MonoBehaviour {
 
         collisionDirectionDiff = Vector2.zero;
         collisionDirection = direction.none;
+        m_renderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
@@ -41,6 +44,8 @@ public class BreakableObject : MonoBehaviour {
         if (m_health <= 0 && !canShake) {
             breakObject();
         }
+
+        sortInWorld();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -136,5 +141,10 @@ public class BreakableObject : MonoBehaviour {
             collisionDirection = direction.none;
 
         }
+    }
+
+    public void sortInWorld() {
+        for (int i = 0; i < Camera.allCamerasCount; i++)
+            m_renderer.sortingOrder = -(int)Camera.allCameras[i].WorldToScreenPoint(gameObject.transform.position).y;
     }
 }

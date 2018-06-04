@@ -15,6 +15,8 @@ public abstract class Entity : MonoBehaviour {
     [HideInInspector]
     public Animator m_animator;
     [HideInInspector]
+    public SpriteRenderer m_renderer;
+    [HideInInspector]
     public enum Direction {
         up,
         down,
@@ -32,6 +34,7 @@ public abstract class Entity : MonoBehaviour {
         m_animator = gameObject.GetComponent<Animator>();
         m_body = gameObject.GetComponent<Rigidbody2D>();
         m_bodyBox = gameObject.GetComponent<BoxCollider2D>();
+        m_renderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public void AddBoxCollider2D(ref GameObject go, string goName, string goTag, Vector2 size, Vector2 offset, bool isTrigger, bool enabled) {
@@ -68,5 +71,14 @@ public abstract class Entity : MonoBehaviour {
         m_directionVectors[(int)Entity.Direction.down] = Vector2.down;
         m_directionVectors[(int)Entity.Direction.left] = Vector2.left;
         m_directionVectors[(int)Entity.Direction.right] = Vector2.right;
+    }
+
+    public void sortInWorld() {
+        for (int i = 0; i < Camera.allCamerasCount; i++)
+            m_renderer.sortingOrder = -(int)Camera.allCameras[i].WorldToScreenPoint(gameObject.transform.position).y;
+    }
+
+    public virtual void Update() {
+        sortInWorld();
     }
 }

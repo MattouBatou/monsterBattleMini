@@ -14,6 +14,8 @@ public class Player:Entity {
     public PlayerMovement m_movement;
     [HideInInspector]
     public List<Mob> m_mobs;
+    [HideInInspector]
+    public int m_maxMobs = 6;
 
 
     public int m_playerId = 0;
@@ -23,11 +25,11 @@ public class Player:Entity {
         m_movement = gameObject.AddComponent<PlayerMovement>();
 
         AddBoxCollider2D(ref m_attackBox, gameObject.name + "_Attack_Box", "PlayerAttackBox", new Vector2(0.5f, 0.5f), Vector2.zero, true, false);
-        AddBoxCollider2D(ref m_hitbox, gameObject.name + "_Hit_Box", "PlayerHitBox", Vector2.zero, true, true);
+        AddBoxCollider2D(ref m_hitbox, gameObject.name + "_Hit_Box", "PlayerHitBox", new Vector2(0f, 0.57f), true, true);
         m_attackBox_time = 0.05f;
 
         m_mobs = new List<Mob> {
-            Capacity = 6
+            Capacity = m_maxMobs
         };
     }
 

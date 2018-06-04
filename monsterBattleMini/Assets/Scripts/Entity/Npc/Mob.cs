@@ -32,9 +32,14 @@ public class Mob : Npc {
             case "PlayerHitBox":
 
                 if (ownerId == -1 && M_followTarget == null && other.transform.parent.gameObject) {
+
                     M_followTarget = other.transform.parent.gameObject.GetComponent<Player>();
-                    ownerId = M_followTarget.m_playerId;
-                    M_followTarget.m_mobs.Add(this);
+                    if (M_followTarget.m_mobs != null && M_followTarget.m_mobs.Count < M_followTarget.m_maxMobs) {
+                        ownerId = M_followTarget.m_playerId;
+                        M_followTarget.m_mobs.Add(this);
+                    } else {
+                        M_followTarget = null;
+                    }
                 }
 
             break;

@@ -46,22 +46,22 @@ public class PlayerMovement:MonoBehaviour {
             if (m_moveInputDirection.x < 0f) {
 
                 offset.x = -0.5f;
-                offset.y = -0.2f;
+                offset.y = 0.57f;
                 m_attackBox.offset = offset;
             }else if (m_moveInputDirection.x > 0f) {
 
                 offset.x = 0.5f;
-                offset.y = -0.2f;
+                offset.y = 0.57f;
                 m_attackBox.offset = offset;
             }else if (m_moveInputDirection.y < 0f) {
 
                 offset.x = 0.0f;
-                offset.y = -0.7f;
+                offset.y = -0.13f;
                 m_attackBox.offset = offset;
             } else if (m_moveInputDirection.y > 0f) {
 
                 offset.x = 0.0f;
-                offset.y = 0.3f;
+                offset.y = 1.03f;
                 m_attackBox.offset = offset;
             }
         }

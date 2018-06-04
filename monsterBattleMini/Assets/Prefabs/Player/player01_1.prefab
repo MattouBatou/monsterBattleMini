@@ -77,10 +77,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6}
+  m_Offset: {x: -0.09, y: 0.14}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.453125, y: 0.453125}
+    pivot: {x: 0.5, y: 0.09375}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -135,12 +135,14 @@ MonoBehaviour:
   m_bodyBox: {fileID: 0}
   m_hitbox: {fileID: 0}
   m_animator: {fileID: 0}
+  m_renderer: {fileID: 0}
   m_directionVectors: []
   m_direction: 0
   m_attackBox: {fileID: 0}
   m_attackBox_time: 0.5
   m_movement: {fileID: 0}
   m_mobs: []
+  m_maxMobs: 6
   m_playerId: 0
   m_walkSpeed: 7
 --- !u!212 &212932092384405740
@@ -175,8 +177,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2015904471
-  m_SortingLayer: 8
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21301060, guid: 2d19b4517c37ae549a6804f06fa3b556, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,4 +190,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
