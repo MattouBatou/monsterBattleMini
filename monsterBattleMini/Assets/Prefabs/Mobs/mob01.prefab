@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61962755183558266}
   - component: {fileID: 50026020238047632}
   - component: {fileID: 114740145067109404}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: mob01
   m_TagString: Mob
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_animator: {fileID: 0}
   m_directionVectors: []
   m_direction: 0
-  m_followTarget: {fileID: 0}
+  M_followTarget: {fileID: 0}
   m_npcId: 0
   m_walkSpeed: 7
   m_collectable: {fileID: 0}

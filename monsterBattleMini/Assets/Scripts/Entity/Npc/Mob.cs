@@ -13,6 +13,8 @@ public class Mob : Npc {
     public CollectableObject m_collectable;
     [HideInInspector]
     public MobMovement m_movement;
+    [HideInInspector]
+    public int ownerId = -1;
 
     new public void Start() {
         base.Start();
@@ -29,10 +31,10 @@ public class Mob : Npc {
 
             case "PlayerHitBox":
 
-                if (M_followTarget == null && other.transform.parent.gameObject) {
-                    Debug.Log("Mob Collided with Player");
+                if (ownerId == -1 && M_followTarget == null && other.transform.parent.gameObject) {
                     M_followTarget = other.transform.parent.gameObject.GetComponent<Player>();
-                    m_bodyBox.isTrigger = true;
+                    ownerId = M_followTarget.m_playerId;
+                    M_followTarget.m_mobs.Add(this);
                 }
 
             break;

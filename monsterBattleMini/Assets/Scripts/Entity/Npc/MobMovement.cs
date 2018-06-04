@@ -6,6 +6,8 @@ public class MobMovement : NpcMovement {
 
     [HideInInspector]
     public Mob m_mob;
+    [HideInInspector]
+    public readonly Vector2 k_mobOffset = new Vector2(0.5f, 0.5f);
 
     protected override void Start() {
         m_mob = gameObject.GetComponent<Mob>();
@@ -23,9 +25,16 @@ public class MobMovement : NpcMovement {
         m_mob.m_body.velocity = Vector2.zero;
 
         if (m_mob.M_followTarget != null) {
+            int mobIndex = m_mob.M_followTarget.m_mobs.FindIndex(x => { return x.m_npcId == m_mob.m_npcId; });
 
             if (m_mob.M_followTarget.m_directionVectors.Length > 0) {
-                Vector2 vectorToTarget = ((Vector2)m_mob.M_followTarget.transform.position - m_mob.M_followTarget.m_directionVectors[(int)m_mob.M_followTarget.m_direction]) - (Vector2)m_mob.transform.position;
+                // Position behind follow target with a given amount of space (k_mobOffset).
+
+                Vector2 vectorToTarget = (
+                    (Vector2)m_mob.M_followTarget.transform.position -
+                    ( ( m_mob.M_followTarget.m_directionVectors[(int)m_mob.M_followTarget.m_direction]
+                        + (k_mobOffset * m_lastDirection)) * (mobIndex + 1) ) ) -
+                        (Vector2)m_mob.transform.position;
 
                 if (Mathf.Abs(vectorToTarget.x) > 0.1f ||
                     Mathf.Abs(vectorToTarget.y) > 0.1f) {

@@ -12,8 +12,7 @@ public class NpcManager : MonoBehaviour {
         Array.Sort(m_mobs, CompareObjNames);
 
         for (int i = 0; i < m_mobs.Length; i++) {
-            // TODO: Might need to make a Mob class that inherits from Npc.
-            Npc mob = m_mobs[i].GetComponent<Npc>();
+            Mob mob = m_mobs[i].GetComponent<Mob>();
             mob.m_npcId = i;
         }
     }
