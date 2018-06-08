@@ -79,6 +79,6 @@ public abstract class Entity : MonoBehaviour {
     }
 
     public virtual void Update() {
-        sortInWorld();
+        //sortInWorld();
     }
 }

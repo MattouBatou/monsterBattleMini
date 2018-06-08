@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61962755183558266}
   - component: {fileID: 50026020238047632}
   - component: {fileID: 114740145067109404}
+  - component: {fileID: 210588284776012562}
   m_Layer: 13
   m_Name: mob01
   m_TagString: Mob
@@ -79,7 +80,7 @@ BoxCollider2D:
   m_Offset: {x: -0.03, y: 0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.08}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -132,6 +133,16 @@ MonoBehaviour:
   m_collectable: {fileID: 0}
   m_movement: {fileID: 0}
   ownerId: -1
+--- !u!210 &210588284776012562
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716870006129412}
+  m_Enabled: 1
+  m_SortingLayerID: -334630205
+  m_SortingLayer: 9
+  m_SortingOrder: 0
 --- !u!212 &212811193818632048
 SpriteRenderer:
   m_ObjectHideFlags: 1

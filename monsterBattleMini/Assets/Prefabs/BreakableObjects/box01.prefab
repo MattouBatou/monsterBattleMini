@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212246702961873016}
   - component: {fileID: 61792778838763918}
   - component: {fileID: 114846545755297230}
+  - component: {fileID: 210101623717903422}
   m_Layer: 0
   m_Name: box01
   m_TagString: Breakable
@@ -66,7 +67,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.819809, y: 0.55}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.05
 --- !u!114 &114846545755297230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +81,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_health: 3
   m_renderer: {fileID: 0}
+--- !u!210 &210101623717903422
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965381378283828}
+  m_Enabled: 1
+  m_SortingLayerID: -334630205
+  m_SortingLayer: 9
+  m_SortingOrder: 0
 --- !u!212 &212246702961873016
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -125,4 +136,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
