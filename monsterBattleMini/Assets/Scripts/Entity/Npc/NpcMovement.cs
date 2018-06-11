@@ -35,7 +35,7 @@ public abstract class NpcMovement:MonoBehaviour {
     }
 
     protected void FixedUpdate() {
-        Move();
+        //Move();
         GetMove();
         SendAnimData();
     }

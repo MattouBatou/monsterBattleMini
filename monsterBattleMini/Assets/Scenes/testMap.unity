@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 55849373}
   - component: {fileID: 55849372}
   - component: {fileID: 55849374}
+  - component: {fileID: 55849375}
   m_Layer: 0
   m_Name: A*
   m_TagString: Untagged
@@ -146,7 +147,9 @@ MonoBehaviour:
     m_Bits: 4096
   gridWorldSize: {x: 63, y: 38}
   nodeRadius: 0.5
-  showDebugWalkableCheck: 0
+  showDebugGizmos: 0
+  gridSizeX: 0
+  gridSizeY: 0
 --- !u!4 &55849373
 Transform:
   m_ObjectHideFlags: 0
@@ -171,8 +174,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1269f2f399bf44cb48087f3c15d8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeker: {fileID: 1862598052}
-  target: {fileID: 1109301665}
+  grid: {fileID: 0}
+--- !u!114 &55849375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 55849371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d391d8b0725dbde43b2f4183568607ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &77544786
 Prefab:
   m_ObjectHideFlags: 0
@@ -32077,11 +32090,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4762217297527722, guid: df8d522813035514a93d48fbdb31f0fe,
     type: 2}
   m_PrefabInternal: {fileID: 1442621416}
---- !u!4 &1862598052 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4883200930304162, guid: f8c0b5d05ea649b48b5ede0c071e2457,
-    type: 2}
-  m_PrefabInternal: {fileID: 1344713493}
 --- !u!1001 &2028009739
 Prefab:
   m_ObjectHideFlags: 0

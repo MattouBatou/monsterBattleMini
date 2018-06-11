@@ -9,14 +9,14 @@ public class AStarGrid : MonoBehaviour {
     public float nodeRadius;
 
     // show debug gizmos
-    public bool showDebugWalkableCheck;
+    public bool showDebugGizmos;
 
-    Node[,] grid;
+    public Node[,] nodeGrid;
 
     float nodeDiameter;
-    int gridSizeX, gridSizeY;
+    public int gridSizeX, gridSizeY;
 
-    void Start() {
+    void Awake() {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
@@ -30,15 +30,15 @@ public class AStarGrid : MonoBehaviour {
     }
 
     void CreateGrid() {
-        grid = new Node[gridSizeX, gridSizeY];
+        nodeGrid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2;
 
         for(int x = 0; x < gridSizeX; x++) {
             for (int y = 0; y < gridSizeY; y++) {
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
-                bool walkable = !(Physics2D.OverlapCircle(worldPoint, .001f, collidableMask));
+                bool walkable = !(Physics2D.OverlapCircle(worldPoint, nodeRadius / 2f, collidableMask));
 
-                grid[x, y] = new Node(walkable, worldPoint, x, y);
+                nodeGrid[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
     }
@@ -55,7 +55,7 @@ public class AStarGrid : MonoBehaviour {
                 int checkY = node.gridY + y;
 
                 if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY) {
-                    neighbours.Add(grid[checkX, checkY]);
+                    neighbours.Add(nodeGrid[checkX, checkY]);
                 }
             }
         }
@@ -71,30 +71,18 @@ public class AStarGrid : MonoBehaviour {
 
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
-        return grid[x, y];
+        return nodeGrid[x, y];
     }
-
-    public List<Node> path;
 
     void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 1));
 
-        if(grid != null) {
-            foreach (Node n in grid) {
+        if(nodeGrid != null && showDebugGizmos) {
+            foreach (Node n in nodeGrid) {
                 Gizmos.color = n.walkable ? Color.white : Color.red;
-
-                if(path != null) {
-                    if (path.Contains(n)) {
-                        Gizmos.color = Color.black;
-                        Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-                    }
-                }
-
-                if (showDebugWalkableCheck) {
-                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawSphere(n.worldPosition, nodeRadius / 2f);
-                }
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                Gizmos.color = Color.green;
+                Gizmos.DrawSphere(n.worldPosition, nodeRadius / 2f);
             }
         }
     }
