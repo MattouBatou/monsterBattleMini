@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: house01Brush
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 1264112918912800, guid: 817bb298c0dcf464b9c0d0f8cba6603a, type: 2}
+  - {fileID: 1723841566077980, guid: f2b050d41fc49184180db64e31af7fc7, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0
